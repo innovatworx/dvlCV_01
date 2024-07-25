@@ -85,6 +85,7 @@ export const ProductItem = ({
   type,
   videoSrc,
   onClick,
+  githubLink,
 }: {
   title: string;
   description: string;
@@ -93,6 +94,7 @@ export const ProductItem = ({
   videoSrc?: string;
   type?: string;
   onClick?: () => void;
+  githubLink?: string;
 }) => {
 //   return (
 //     <Link href={href} className="flex space-x-2">

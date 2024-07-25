@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "@/utils/cn";
 import { motion } from "framer-motion";
+import { title } from "process";
 
 export function NavbarDemo() {
   return (
@@ -19,9 +20,13 @@ function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const [showVideo, setShowVideo] = useState<boolean>(false);
   const [selectedVideoSrc, setSelectedVideoSrc] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string | null>(null);
+  const [selectedGithubLink, setSelectedGithubLink] = useState<string | null>(null);
 
-  const handleVideoClick = (videoSrc: string) => {
+  const handleVideoClick = (videoSrc: string, title: string, githubLink: string) => {
     setSelectedVideoSrc(videoSrc);
+    setSelectedTitle(title);
+    setSelectedGithubLink(githubLink);
     setShowVideo(true);
   };
 
@@ -51,7 +56,7 @@ function Navbar({ className }: { className?: string }) {
               // src="https://assets.aceternity.com/demos/algochurn.webp"
               type="video/mp4"
               description="Prepare for tech interviews like never before."
-              onClick={() => handleVideoClick('/orangeU-2.mp4')}
+              onClick={() => handleVideoClick('/orangeU-2.mp4', 'Orange U', 'https://github.com/')}
             />
             <ProductItem
               title="Password Generator"
@@ -59,14 +64,14 @@ function Navbar({ className }: { className?: string }) {
               videoSrc="/python-password-generator-3.mp4"
               type="video/mp4"
               description="Production ready Tailwind css components for your next project"
-              onClick={() => handleVideoClick('/python-password-generator-3.mp4')}
+              onClick={() => handleVideoClick('/python-password-generator-3.mp4', 'Python Password Generator', 'https://github.com/')}
             />
             <ProductItem
               title="StickyNotesApp"
               //href="https://gomoonbeam.com"
               videoSrc="/StickyNotesApp-1.mp4"
               description="Never write from scratch again. Go from idea to blog in minutes."
-              onClick={() => handleVideoClick('/StickyNotesApp-1.mp4')}
+              onClick={() => handleVideoClick('/StickyNotesApp-1.mp4', 'Sticky Notes App', 'https://github.com/')}
             />
             <ProductItem
               title="Rogue"
@@ -87,7 +92,7 @@ function Navbar({ className }: { className?: string }) {
             <HoveredLink href="https://nextjs.org" target="_blank">NextJS</HoveredLink>
             <HoveredLink href="https://ui.aceternity.com" target="_blank">Aceternity UI</HoveredLink>
             <HoveredLink href="https://tailwindcss.com">Tailwind CSS</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+            <HoveredLink href="https:npm.org">NPM</HoveredLink>
           </div>
         </MenuItem>
       </Menu>
@@ -104,6 +109,14 @@ function Navbar({ className }: { className?: string }) {
               <source src={selectedVideoSrc} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <div className="mt-4">
+              <h2 className="text-xl font-bold">{selectedTitle}</h2>
+              {selectedGithubLink && (
+                <a href={selectedGithubLink} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+                  GitHub Repository
+                </a>
+              )}
+            </div>
             <button
               onClick={() => setShowVideo(false)}
               className="mt-4 p-2 bg-red-500 text-white rounded-md"
