@@ -80,17 +80,19 @@ export const Menu = ({
 export const ProductItem = ({
   title,
   description,
-  href,
+  //href,
   src,
   type,
   videoSrc,
+  onClick,
 }: {
   title: string;
   description: string;
-  href: string;
+  //href: string;
   src?: string;
   videoSrc?: string;
   type?: string;
+  onClick?: () => void;
 }) => {
 //   return (
 //     <Link href={href} className="flex space-x-2">
@@ -114,7 +116,8 @@ export const ProductItem = ({
 // };
 
 return (
-  <Link href={href} className="flex space-x-2">
+  // <Link href={href} className="flex space-x-2">
+<div className="cursor-pointer" onClick={onClick}>
     {videoSrc ? (
       <video 
       width={160} 
@@ -125,6 +128,7 @@ return (
       autoPlay
       loop
       muted
+      disablePictureInPicture
       className="flex-shrink-0 rounded-md shadow-2xl"
       >
         <source src={videoSrc} type={type} />
@@ -147,7 +151,8 @@ return (
         {description}
       </p>
     </div>
-  </Link>
+    </div>
+  // {/* </Link> */}
 );
 };
 

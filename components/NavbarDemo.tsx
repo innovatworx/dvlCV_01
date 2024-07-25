@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "@/utils/cn";
+import { motion } from "framer-motion";
 
 export function NavbarDemo() {
   return (
@@ -16,6 +17,14 @@ export function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const [showVideo, setShowVideo] = useState<boolean>(false);
+  const [selectedVideoSrc, setSelectedVideoSrc] = useState<string | null>(null);
+
+  const handleVideoClick = (videoSrc: string) => {
+    setSelectedVideoSrc(videoSrc);
+    setShowVideo(true);
+  };
+
   return (
     <div
       className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
@@ -37,34 +46,37 @@ function Navbar({ className }: { className?: string }) {
           {/* <div className="  text-sm grid grid-cols-2 gap-10 p-4"> */}
             <ProductItem
               title="Orange U"
-              href="https://algochurn.com"
+              //href="https://algochurn.com"
               videoSrc="/orangeU-2.mp4"
               // src="https://assets.aceternity.com/demos/algochurn.webp"
               type="video/mp4"
               description="Prepare for tech interviews like never before."
+              onClick={() => handleVideoClick('/orangeU-2.mp4')}
             />
             <ProductItem
               title="Password Generator"
-              href="https://tailwindmasterkit.com"
+              //href="https://tailwindmasterkit.com"
               videoSrc="/python-password-generator-3.mp4"
               type="video/mp4"
               description="Production ready Tailwind css components for your next project"
+              onClick={() => handleVideoClick('/python-password-generator-3.mp4')}
             />
             <ProductItem
               title="StickyNotesApp"
-              href="https://gomoonbeam.com"
+              //href="https://gomoonbeam.com"
               videoSrc="/StickyNotesApp-1.mp4"
               description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/StickyNotesApp-1.mp4')}
             />
             <ProductItem
               title="Rogue"
-              href="https://userogue.com"
+              //href="https://userogue.com"
               src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
             />
             <ProductItem
               title="Rogue"
-              href="https://userogue.com"
+              //href="https://userogue.com"
               src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
             />
@@ -79,6 +91,28 @@ function Navbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
       </Menu>
+      {/* Modal for Video */}
+      {showVideo && selectedVideoSrc && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl p-4 max-w-screen-md w-full"
+          >
+            <video controls autoPlay loop muted className="w-full h-auto">
+              <source src={selectedVideoSrc} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <button
+              onClick={() => setShowVideo(false)}
+              className="mt-4 p-2 bg-red-500 text-white rounded-md"
+            >
+              Close
+            </button>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
