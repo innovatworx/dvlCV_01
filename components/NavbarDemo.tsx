@@ -63,15 +63,29 @@ function Navbar({ className }: { className?: string }) {
               //href="https://tailwindmasterkit.com"
               videoSrc="/python-password-generator-3.mp4"
               type="video/mp4"
-              description="Production ready Tailwind css components for your next project"
+              description="Python password generator"
               onClick={() => handleVideoClick('/python-password-generator-3.mp4', 'Python Password Generator', 'https://github.com/')}
             />
             <ProductItem
-              title="StickyNotesApp"
+              title="Sticky Notes App"
               //href="https://gomoonbeam.com"
               videoSrc="/StickyNotesApp-1.mp4"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/StickyNotesApp-1.mp4', 'Sticky Notes App', 'https://github.com/')}
+            />
+            <ProductItem
+              title="Movie & Rating App"
+              //href="https://gomoonbeam.com"
+              videoSrc="/Movie _Rating_App.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/Movie _Rating_App.mp4', 'Movie & Rating App', 'https://github.com/')}
+            />
+            <ProductItem
+              title="ToDo List App"
+              //href="https://gomoonbeam.com"
+              videoSrc="/ToDo_List-1.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/ToDo_List-1.mp4', 'ToDo List App', 'https://github.com/')}
             />
             <ProductItem
               title="Rogue"
@@ -93,6 +107,11 @@ function Navbar({ className }: { className?: string }) {
             <HoveredLink href="https://ui.aceternity.com" target="_blank">Aceternity UI</HoveredLink>
             <HoveredLink href="https://tailwindcss.com">Tailwind CSS</HoveredLink>
             <HoveredLink href="https:npm.org">NPM</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Contact">
+          <div className="flex flex-col space-y-4 text-lg">
+                        <HoveredLink href="/contact">Contact Me</HoveredLink>
           </div>
         </MenuItem>
       </Menu>

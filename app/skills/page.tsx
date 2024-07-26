@@ -1,33 +1,56 @@
+
+"use client";
+
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
+import { motion } from 'framer-motion';
 import React from 'react'
+
+
+const lines = [
+  "Skills",
+  ["UI/UX", "Designing Web/App interfaces"],
+  ["Web Development", "HTML/CSS/SASS, JavaScript, jQuery, Angular, React, React Native"],
+  ["App Development", "Building Android/iOS apps"],
+  ["Design and Creativity", "Adobe Creative Cloud/Suite, Blender"],
+  ["Database Management", "MySQL, MongoDB, NoSQL,SQL, MariaDB"],
+  ["Programming Languages", "C#, C++, Python, SQL, Java, Apple Xcode"],
+  ["Microsoft Technologies", "Microsoft Endpoint Configuration Manager (MECM/SCCM), MS O365, MS Active Directory"],
+];
+
 
 const page = () => {
   return (
-    <section className="h-screen flex flex-col justify-center items-center bg-gray-900 text-white p-8">
-    <div className='text-white text-6xl animate-fadeIn'>
-        My Skills
-        <div className="mt-8">
-          <h2 className="text-5xl animate-fadeIn">Skills</h2>
-          <ul className="text-xl list-disc list-inside animate-fadeIn">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Next.js</li>
-          {/* </ul>
-          <ul> */}
-                            <li>UI/UX Designing Web/App interfaces</li>
-                                <li><span>Web Development</span> HTML/CSS/SASS, JavaScript, jQuery, Angular, React, React Native</li>
-                                <li><span>App Development</span>Building Android/iOS apps</li>
-                                <li><span>Design and Creativity</span>Adobe Creative Cloud/Suite, Blender</li>
-                                <li><span>Database Management</span>MySQL, MongoDB, NoSQL,SQL, MariaDB</li>
-                                <li><span>Programming Languages</span>C#, C++, Python, SQL, Java, Apple Xcode</li>
-                                <li><span>Microsoft Technologies</span>Microsoft Endpoint Configuration Manager (MECM/SCCM), MS O365, MS Active
-                                    Directory</li>
-                        </ul>
-        </div>
-    </div>
-    </section>
-  )
-}
+    <AuroraBackground>
+      <div className="relative flex flex-col gap-8 items-start justify-center px-4">
+        {lines.map((line, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: index * 0.9, // Adjust the delay for staggering
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className={`${index === 0 ? 'text-4xl md:text-7xl mb-10' : 'text-xl md:text-2xl'
+              } font-bold dark:text-white text-center`}
+          >
+            {index === 0 ? (
+              line
+            ) : (
+              <div className="text-left">
+                <div className="flex items-center">
+                  <span className="mr-2 text-base md:text-lg">• {line[0]}</span>
+                </div>
+                <div className="ml-8 text-sm md:text-base">{line[1]}</div>
+              </div>
+            )}
+          </motion.div>
+        ))}
+      </div>
+    </AuroraBackground>
+  );
+};
 
 export default page

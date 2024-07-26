@@ -18,3 +18,8 @@ body {
 .projects-bg {
   background: #100433;
 }
+
+.blur-background {
+  filter: blur(10px);
+  pointer-events: none;
+}
