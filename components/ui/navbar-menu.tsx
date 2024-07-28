@@ -1,3 +1,4 @@
+// components/navbar-menu.tsx
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -47,7 +48,7 @@ export const MenuItem = ({
               >
                 <motion.div
                   layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
+                  className="w-max h-full p-4 menu-content" // Added menu-content class
                 >
                   {children}
                 </motion.div>
@@ -96,72 +97,47 @@ export const ProductItem = ({
   onClick?: () => void;
   githubLink?: string;
 }) => {
-//   return (
-//     <Link href={href} className="flex space-x-2">
-//       <Image
-//         src={src}
-//         width={140}
-//         height={70}
-//         alt={title}
-//         className="flex-shrink-0 rounded-md shadow-2xl"
-//       />
-//       <div>
-//         <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
-//           {title}
-//         </h4>
-//         <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
-//           {description}
-//         </p>
-//       </div>
-//     </Link>
-//   );
-// };
-
-return (
-  // <Link href={href} className="flex space-x-2">
-<div className="cursor-pointer" onClick={onClick}>
-    {videoSrc ? (
-      <video 
-      width={160} 
-      height={90} 
-      // width={140} 
-      // height={70} 
-      // controls 
-      autoPlay
-      loop
-      muted
-      disablePictureInPicture
-      className="flex-shrink-0 rounded-md shadow-2xl"
-      >
-        <source src={videoSrc} type={type} />
-        Your browser does not support the video tag.
-      </video>
-    ) : (
-      <Image
-        src={src}
-        width={140}
-        height={70}
-        alt={title}
-        className="flex-shrink-0 rounded-md shadow-2xl"
-      />
-    )}
-    <div>
-      <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
-        {title}
-      </h4>
-      <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
-        {description}
-      </p>
+  return (
+    <div className="cursor-pointer" onClick={onClick}>
+      {videoSrc ? (
+        <video
+          width={160}
+          height={90}
+          autoPlay
+          loop
+          muted
+          disablePictureInPicture
+          className="flex-shrink-0 rounded-md shadow-2xl"
+        >
+          <source src={videoSrc} type={type} />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <Image
+          src={src}
+          width={140}
+          height={70}
+          alt={title}
+          className="flex-shrink-0 rounded-md shadow-2xl"
+        />
+      )}
+      <div>
+        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
+          {title}
+        </h4>
+        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
+          {description}
+        </p>
+      </div>
     </div>
-    </div>
-  // {/* </Link> */}
-);
+  );
 };
 
-export const HoveredLink = ({ children, ...rest }: any) => {
+export const HoveredLink = ({ children, onClick, ...rest }: any) => {
   return (
     <Link
       {...rest}
+      onClick={onclick}
       className="text-neutral-700 dark:text-neutral-200 hover:text-black "
     >
       {children}

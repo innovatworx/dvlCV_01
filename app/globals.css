@@ -5,6 +5,13 @@
 body {
   /* @apply h-[100vh]; */
   background: #100433;
+  overflow: hidden;
+}
+
+/* Add these styles for the scrollable menu */
+.menu-content {
+  max-height: calc(100vh - 4rem); /* Adjust as needed for padding/margins */
+  overflow-y: auto;
 }
 
 .dark {

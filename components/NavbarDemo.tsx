@@ -1,22 +1,12 @@
+// components/navbarDemo.tsx
 "use client";
 import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "@/utils/cn";
 import { motion } from "framer-motion";
-import { title } from "process";
+import Overlay from "./Overlay";
 
 export function NavbarDemo() {
-  return (
-    <div className="relative w-full flex items-center justify-center">
-      <Navbar className="top-2" />
-      {/* <p className="text-black dark:text-white">
-        The Navbar will show on top of the page
-      </p> */}
-    </div>
-  );
-}
-
-function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const [showVideo, setShowVideo] = useState<boolean>(false);
   const [selectedVideoSrc, setSelectedVideoSrc] = useState<string | null>(null);
@@ -30,37 +20,74 @@ function Navbar({ className }: { className?: string }) {
     setShowVideo(true);
   };
 
+  const handleCloseMenu = () => setActive(null);
+
   return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
-    >
+    <div className="relative w-full flex items-center justify-center">
+      <Overlay isActive={!!active} />
+      <Navbar
+        className="top-2"
+        active={active}
+        setActive={setActive}
+        handleVideoClick={handleVideoClick}
+        showVideo={showVideo}
+        selectedVideoSrc={selectedVideoSrc}
+        selectedTitle={selectedTitle}
+        selectedGithubLink={selectedGithubLink}
+        setShowVideo={setShowVideo}
+        handleCloseMenu={handleCloseMenu}
+      />
+    </div>
+  );
+}
+
+
+function Navbar({
+  className,
+  active,
+  setActive,
+  handleVideoClick,
+  showVideo,
+  selectedVideoSrc,
+  selectedTitle,
+  selectedGithubLink,
+  setShowVideo,
+  handleCloseMenu,
+}: {
+  className?: string;
+  active: string | null;
+  setActive: (item: string | null) => void;
+  handleVideoClick: (videoSrc: string, title: string, githubLink: string) => void;
+  showVideo: boolean;
+  selectedVideoSrc: string | null;
+  selectedTitle: string | null;
+  selectedGithubLink: string | null;
+  setShowVideo: (show: boolean) => void;
+  handleCloseMenu: () => void;
+}) {
+  return (
+    <div className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}>
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="About">
           <div className="flex flex-col space-y-4 text-lg">
-            <HoveredLink href="/">Home</HoveredLink>
-            <HoveredLink href="/about">About Me</HoveredLink>
-            <HoveredLink href="/education">Education</HoveredLink>
-            <HoveredLink href="/skills">Skills</HoveredLink>
-            <HoveredLink href="/experience">Work Experience</HoveredLink>
-            <HoveredLink href="/contact">Contact Me</HoveredLink>
+          <HoveredLink href="/" onClick={handleCloseMenu}>Home</HoveredLink>
+            <HoveredLink href="/about" onClick={handleCloseMenu}>About Me</HoveredLink>
+            <HoveredLink href="/education" onClick={handleCloseMenu}>Education</HoveredLink>
+            <HoveredLink href="/skills" onClick={handleCloseMenu}>Skills</HoveredLink>
+            <HoveredLink href="/experience" onClick={handleCloseMenu}>Work Experience</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Projects">
-          {/* <div className="  text-sm grid grid-cols-2 gap-5 p-2"> */}
           <div className="text-lg grid grid-cols-1 md:grid-cols-2 gap-5 p-2">
-          {/* <div className="  text-sm grid grid-cols-2 gap-10 p-4"> */}
             <ProductItem
               title="Orange U"
-              //href="https://algochurn.com"
               videoSrc="/orangeU-2.mp4"
-              // src="https://assets.aceternity.com/demos/algochurn.webp"
               type="video/mp4"
               description="Prepare for tech interviews like never before."
               onClick={() => handleVideoClick('/orangeU-2.mp4', 'Orange U', 'https://github.com/')}
             />
             <ProductItem
               title="Password Generator"
-              //href="https://tailwindmasterkit.com"
               videoSrc="/python-password-generator-3.mp4"
               type="video/mp4"
               description="Python password generator"
@@ -68,35 +95,28 @@ function Navbar({ className }: { className?: string }) {
             />
             <ProductItem
               title="Sticky Notes App"
-              //href="https://gomoonbeam.com"
               videoSrc="/StickyNotesApp-1.mp4"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/StickyNotesApp-1.mp4', 'Sticky Notes App', 'https://github.com/')}
             />
             <ProductItem
               title="Movie & Rating App"
-              //href="https://gomoonbeam.com"
               videoSrc="/Movie _Rating_App.mp4"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/Movie _Rating_App.mp4', 'Movie & Rating App', 'https://github.com/')}
             />
             <ProductItem
               title="ToDo List App"
-              //href="https://gomoonbeam.com"
               videoSrc="/ToDo_List-1.mp4"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/ToDo_List-1.mp4', 'ToDo List App', 'https://github.com/')}
             />
             <ProductItem
               title="Rogue"
-              //href="https://userogue.com"
-              //src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
             />
             <ProductItem
               title="Rogue"
-              //href="https://userogue.com"
-              //src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
             />
           </div>
@@ -111,11 +131,10 @@ function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Contact">
           <div className="flex flex-col space-y-4 text-lg">
-                        <HoveredLink href="/contact">Contact Me</HoveredLink>
+            <HoveredLink href="/contact" onClick={handleCloseMenu}>Contact Me</HoveredLink>
           </div>
         </MenuItem>
       </Menu>
-      {/* Modal for Video */}
       {showVideo && selectedVideoSrc && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <motion.div
