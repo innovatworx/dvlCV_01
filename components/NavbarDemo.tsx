@@ -70,7 +70,7 @@ function Navbar({
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="About">
           <div className="flex flex-col space-y-4 text-lg">
-          <HoveredLink href="/" onClick={handleCloseMenu}>Home</HoveredLink>
+            <HoveredLink href="/" onClick={handleCloseMenu}>Home</HoveredLink>
             <HoveredLink href="/about" onClick={handleCloseMenu}>About Me</HoveredLink>
             <HoveredLink href="/education" onClick={handleCloseMenu}>Education</HoveredLink>
             <HoveredLink href="/skills" onClick={handleCloseMenu}>Skills</HoveredLink>
@@ -80,6 +80,24 @@ function Navbar({
         <MenuItem setActive={setActive} active={active} item="Projects">
           <div className="text-lg grid grid-cols-1 md:grid-cols-2 gap-5 p-2">
             <ProductItem
+              title="C# CRUD App"
+              videoSrc="/CSharp_App.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/CSharp_App.mp4', 'React Native ToDo List App', 'https://github.com/')}
+            />
+            <ProductItem
+              title="Mario's Pizza Website"
+              videoSrc="/marios-2.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/marios-2.mp4', 'Movie & Rating App', 'https://github.com/')}
+            />
+            <ProductItem
+              title="Movie & Rating App"
+              videoSrc="/Movie _Rating_App.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/Movie _Rating_App.mp4', 'Movie & Rating App', 'https://github.com/')}
+            />
+            <ProductItem
               title="Orange U"
               videoSrc="/orangeU-2.mp4"
               type="video/mp4"
@@ -87,23 +105,34 @@ function Navbar({
               onClick={() => handleVideoClick('/orangeU-2.mp4', 'Orange U', 'https://github.com/')}
             />
             <ProductItem
-              title="Password Generator"
+              title="Python Contact App"
+              videoSrc="/Python_Contact_App-1.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/Python_Contact_App-1.mp4', 'React Native ToDo List App', 'https://github.com/')}
+            />
+            <ProductItem
+              title="Python Password Generator"
               videoSrc="/python-password-generator-3.mp4"
               type="video/mp4"
               description="Python password generator"
               onClick={() => handleVideoClick('/python-password-generator-3.mp4', 'Python Password Generator', 'https://github.com/')}
+            /> <ProductItem
+              title="React Native Tic Tac Toe App"
+              videoSrc="/tik-tak-toe-1b.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/tik-tak-toe-1b.mp4', 'React Native ToDo List App', 'https://github.com/')}
+            />
+            <ProductItem
+              title="React Native ToDo List App"
+              videoSrc="/rn-todo-app-1.mp4"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+              onClick={() => handleVideoClick('/rn-todo-app-1.mp4', 'React Native ToDo List App', 'https://github.com/')}
             />
             <ProductItem
               title="Sticky Notes App"
               videoSrc="/StickyNotesApp-1.mp4"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/StickyNotesApp-1.mp4', 'Sticky Notes App', 'https://github.com/')}
-            />
-            <ProductItem
-              title="Movie & Rating App"
-              videoSrc="/Movie _Rating_App.mp4"
-              description="Never write from scratch again. Go from idea to blog in minutes."
-              onClick={() => handleVideoClick('/Movie _Rating_App.mp4', 'Movie & Rating App', 'https://github.com/')}
             />
             <ProductItem
               title="ToDo List App"
@@ -115,18 +144,19 @@ function Navbar({
               title="Rogue"
               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
             />
-            <ProductItem
+            {/* <ProductItem
               title="Rogue"
               description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-            />
+            /> */}
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Links">
+        <MenuItem setActive={setActive} active={active} item="Resources">
           <div className="flex flex-col space-y-4 text-lg">
             <HoveredLink href="https://nextjs.org" target="_blank">NextJS</HoveredLink>
             <HoveredLink href="https://ui.aceternity.com" target="_blank">Aceternity UI</HoveredLink>
             <HoveredLink href="https://tailwindcss.com">Tailwind CSS</HoveredLink>
             <HoveredLink href="https:npm.org">NPM</HoveredLink>
+            <HoveredLink href="https://code.visualstudio.com/">Visual Studio Code</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Contact">
