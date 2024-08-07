@@ -30,3 +30,19 @@ body {
   filter: blur(10px);
   pointer-events: none;
 }
+
+/* Media queries to adjust the menu position for smaller screens */
+/* @media (max-width: 768px) {
+  .relative {
+    display: flex;
+    justify-content: center;
+  }
+
+  .relative .absolute {
+    position: absolute;
+    top: calc(100% + 1.2rem);
+    left: 50%;
+    transform: translateX(-50%);
+    
+  }
+} */
