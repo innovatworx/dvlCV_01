@@ -1,7 +1,7 @@
 // pages/about.tsx
 "use client";
 
-import Navbar from '@/components/Navbar';
+import Navbar from '@/remove/Navbar';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { motion } from 'framer-motion';
 import React from 'react';
