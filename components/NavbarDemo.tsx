@@ -98,11 +98,11 @@ function Navbar({
               onClick={() => handleVideoClick('/Movie _Rating_App.mp4', 'Movie & Rating App', 'https://github.com/')}
             />
             <ProductItem
-              title="Orange U"
+              title="Orange U Website"
               src="/Orange U.png"
               type="video/mp4"
               description="Prepare for tech interviews like never before."
-              onClick={() => handleVideoClick('/orangeU-2.mp4', 'Orange U', 'https://github.com/')}
+              onClick={() => handleVideoClick('/orangeU-2.mp4', 'Orange U Website', 'https://github.com/')}
             />
             <ProductItem
               title="Python Contact App"
@@ -140,14 +140,6 @@ function Navbar({
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/ToDo_List-1.mp4', 'ToDo List App', 'https://github.com/')}
             />
-            <ProductItem
-              title="Rogue"
-              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-            />
-            {/* <ProductItem
-              title="Rogue"
-              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-            /> */}
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Resources">
