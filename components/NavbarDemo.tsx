@@ -81,62 +81,62 @@ function Navbar({
           <div className="text-lg grid grid-cols-1 md:grid-cols-2 gap-5 p-2">
             <ProductItem
               title="C# CRUD App"
-              videoSrc="/CSharp_App.mp4"
+              src="/CSharp CRUD App.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
-              onClick={() => handleVideoClick('/CSharp_App.mp4', 'React Native ToDo List App', 'https://github.com/')}
+              onClick={() => handleVideoClick('/CSharp_App.mp4', 'C# CRUD App', 'https://github.com/')}
             />
             <ProductItem
               title="Mario's Pizza Website"
-              videoSrc="/marios-2.mp4"
+              src="/Mario's Pizza Website.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
-              onClick={() => handleVideoClick('/marios-2.mp4', 'Movie & Rating App', 'https://github.com/')}
+              onClick={() => handleVideoClick('/marios-2.mp4', "Mario's Pizza Website", 'https://github.com/')}
             />
             <ProductItem
               title="Movie & Rating App"
-              videoSrc="/Movie _Rating_App.mp4"
+              src="/Movie & Rating App.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/Movie _Rating_App.mp4', 'Movie & Rating App', 'https://github.com/')}
             />
             <ProductItem
               title="Orange U"
-              videoSrc="/orangeU-2.mp4"
+              src="/Orange U.png"
               type="video/mp4"
               description="Prepare for tech interviews like never before."
               onClick={() => handleVideoClick('/orangeU-2.mp4', 'Orange U', 'https://github.com/')}
             />
             <ProductItem
               title="Python Contact App"
-              videoSrc="/Python_Contact_App-1.mp4"
+              src="/Python Contact App.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
-              onClick={() => handleVideoClick('/Python_Contact_App-1.mp4', 'React Native ToDo List App', 'https://github.com/')}
+              onClick={() => handleVideoClick('/Python_Contact_App-1.mp4', 'Python Contact App', 'https://github.com/')}
             />
             <ProductItem
               title="Python Password Generator"
-              videoSrc="/python-password-generator-3.mp4"
-              type="video/mp4"
+              // type="video/mp4"
+              src="/Python Password Generator.png"
               description="Python password generator"
               onClick={() => handleVideoClick('/python-password-generator-3.mp4', 'Python Password Generator', 'https://github.com/')}
             /> <ProductItem
-              title="React Native Tic Tac Toe App"
-              videoSrc="/tik-tak-toe-1b.mp4"
+              title="React Native Tic Tac Toe"
+              src="/React Native Tik Tak Toe.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
-              onClick={() => handleVideoClick('/tik-tak-toe-1b.mp4', 'React Native ToDo List App', 'https://github.com/')}
+              onClick={() => handleVideoClick('/tik-tak-toe-1b.mp4', 'React Native Tic Tac Toe', 'https://github.com/')}
             />
             <ProductItem
               title="React Native ToDo List App"
-              videoSrc="/rn-todo-app-1.mp4"
+              src="/React Native ToDo List App.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/rn-todo-app-1.mp4', 'React Native ToDo List App', 'https://github.com/')}
             />
             <ProductItem
               title="Sticky Notes App"
-              videoSrc="/StickyNotesApp-1.mp4"
+              src="/Sticky Notes App.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/StickyNotesApp-1.mp4', 'Sticky Notes App', 'https://github.com/')}
             />
             <ProductItem
               title="ToDo List App"
-              videoSrc="/ToDo_List-1.mp4"
+              src="/ToDo List App.png"
               description="Never write from scratch again. Go from idea to blog in minutes."
               onClick={() => handleVideoClick('/ToDo_List-1.mp4', 'ToDo List App', 'https://github.com/')}
             />
@@ -173,7 +173,7 @@ function Navbar({
             transition={{ duration: 0.3 }}
             className="bg-white dark:bg-black rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl p-4 max-w-screen-md w-full"
           >
-            <video controls autoPlay loop muted className="w-full h-auto">
+            <video autoPlay loop muted disablePictureInPicture className="w-full h-auto">
               <source src={selectedVideoSrc} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
