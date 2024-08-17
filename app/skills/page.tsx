@@ -22,7 +22,7 @@ const lines = [
 const page = () => {
   return (
     <AuroraBackground>
-      <div className="relative flex flex-col gap-8 items-start justify-center px-4">
+      <div className="relative flex flex-col gap-4 items-start justify-center min-h-screen px-4 py-7">
         {lines.map((line, index) => (
           <motion.div
             key={index}
@@ -33,7 +33,10 @@ const page = () => {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className={`${index === 0 ? 'text-4xl md:text-7xl mb-10' : 'text-xl md:text-2xl'
+            className={`${index === 0 
+              ? 'text-4xl md:text-6xl mb-6 mt-8 sm:mt-12 md:mt-16 lg:mt-20 md:mb-4' 
+                : 'text-xl md:text-2xl'
+              // ? 'text-4xl md:text-7xl mb-10' : 'text-xl md:text-2xl'
               } font-bold dark:text-white text-center`}
           >
             {index === 0 ? (
@@ -43,7 +46,8 @@ const page = () => {
                 <div className="flex items-center">
                   <span className="mr-2 text-base md:text-lg">• {line[0]}</span>
                 </div>
-                <div className="ml-8 text-sm md:text-base">{line[1]}</div>
+                <div className="ml-10 text-sm md:text-base">{line[1]}</div>
+                {/* <div className="ml-8 text-sm md:text-base">{line[1]}</div> */}
               </div>
             )}
           </motion.div>
